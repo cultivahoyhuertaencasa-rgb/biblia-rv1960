@@ -1,0 +1,117 @@
+﻿ <!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Biblia RV1960</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<header>
+
+<h1>Biblia RV1960</h1>
+
+<input
+type="text"
+id="buscar"
+placeholder="Buscar versículo..."
+>
+
+</header>
+
+<!-- LIBROS -->
+<div id="listaLibros">
+
+   <div class="selector-testamento">
+
+        <button
+id="btnAntiguo"
+class="activo"
+onclick="mostrarTestamento('Antiguo')">
+
+Antiguo
+
+</button>
+
+<button
+id="btnNuevo"
+onclick="mostrarTestamento('Nuevo')">
+
+Nuevo
+
+</button>
+
+    </div>
+
+    <div id="contenedorLibros"></div>
+
+</div>
+
+
+
+<!-- CAPÍTULOS -->
+
+<section
+id="capitulos"
+style="display:none;">
+
+<button
+class="volver"
+onclick="volverLibros()">
+
+⬅ Volver
+
+</button>
+
+<h2 id="tituloLibro"></h2>
+
+<div id="listaCapitulos"></div>
+
+</section>
+
+<!-- TEXTO -->
+
+<section
+id="textoCapitulo"
+style="display:none;">
+
+<button
+class="volver"
+onclick="volverCapitulos()">
+
+⬅ Volver
+
+</button>
+<div class="navegacion-capitulos">
+
+<button onclick="capituloAnterior()">
+⬅ Anterior
+</button>
+
+<button onclick="capituloSiguiente()">
+Siguiente ➡
+</button>
+
+</div>
+
+<h2 id="tituloCapitulo"></h2>
+
+<div id="contenidoCapitulo"></div>
+
+</section>
+<footer class="pie-app">
+
+Biblia RV1960 © 2026
+Desarrollada por JC Studio
+
+</footer>
+
+<script src="app.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
