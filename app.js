@@ -486,7 +486,33 @@ function cambiarFuente(valor){
     });
 
 }
+function toggleDarkMode(){
 
+    document.body.classList.toggle("modo-oscuro");
+
+    if(document.body.classList.contains("modo-oscuro")){
+
+        localStorage.setItem("tema","oscuro");
+
+    }else{
+
+        localStorage.setItem("tema","claro");
+
+    }
+
+}
+
+window.addEventListener("load",()=>{
+
+    let tema = localStorage.getItem("tema");
+
+    if(tema==="oscuro"){
+
+        document.body.classList.add("modo-oscuro");
+
+    }
+
+});
 /* =====================
 INICIAR
 ===================== */
