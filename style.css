@@ -245,25 +245,22 @@ background:#334155;
 .selector-testamento button.activo{
 background:#2563eb;
 }
+
 .navegacion-capitulos{
 display:flex;
-gap:10px;
+justify-content:center;
+gap:15px;
 margin-bottom:15px;
 }
 
 .navegacion-capitulos button{
-flex:1;
-padding:12px;
+padding:12px 20px;
 border:none;
 border-radius:10px;
 background:#2563eb;
 color:white;
 cursor:pointer;
 font-size:16px;
-}
-
-.navegacion-capitulos button:hover{
-background:#1d4ed8;
 }
 body.modo-oscuro{
     background:#121212;
