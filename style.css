@@ -1,4 +1,4 @@
-Ôªø /* =========================
+? /* =========================
 RESET
 ========================= */
 
@@ -99,7 +99,7 @@ transform:translateY(-2px);
 }
 
 /* =========================
-BOT√ìN VOLVER
+BOT”N VOLVER
 ========================= */
 
 .volver{
@@ -119,7 +119,7 @@ background:#1d4ed8;
 }
 
 /* =========================
-CAP√çTULOS
+CAPÕTULOS
 ========================= */
 
 #listaCapitulos{
@@ -196,7 +196,7 @@ background:#475569;
 }
 
 /* =========================
-M√ìVIL
+M”VIL
 ========================= */
 
 @media(max-width:600px){
@@ -266,7 +266,7 @@ font-size:16px;
 background:#1d4ed8;
 }
 /* =========================
-PIE DE P√ÅGINA
+PIE DE P¡GINA
 ========================= */
 
 .pie-app{
@@ -276,4 +276,29 @@ color:#94a3b8;
 margin-top:40px;
 padding:20px 10px;
 line-height:1.6;
+}
+/* =========================
+CONTROLES DE FUENTE
+========================= */
+
+.controles-fuente{
+display:flex;
+justify-content:center;
+gap:10px;
+margin:15px 0;
+}
+
+.controles-fuente button{
+padding:10px 20px;
+border:none;
+border-radius:10px;
+background:#2563eb;
+color:white;
+font-size:18px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.controles-fuente button:hover{
+background:#1d4ed8;
 }
