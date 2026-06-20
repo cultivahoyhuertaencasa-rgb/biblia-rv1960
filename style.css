@@ -156,9 +156,9 @@ margin-top:15px;
 }
 
 #contenidoCapitulo p{
-line-height:1.9;
-margin-bottom:12px;
-font-size:17px;
+    line-height:1.9;
+    margin-bottom:12px;
+    font-size:inherit;
 }
 
 #contenidoCapitulo strong{
