@@ -490,11 +490,18 @@ function toggleDarkMode(){
 
     document.body.classList.toggle("modo-oscuro");
 
+    const btn =
+    document.getElementById("btnTema");
+
     if(document.body.classList.contains("modo-oscuro")){
+
+        btn.innerHTML="☀️";
 
         localStorage.setItem("tema","oscuro");
 
     }else{
+
+        btn.innerHTML="🌙";
 
         localStorage.setItem("tema","claro");
 
@@ -502,17 +509,6 @@ function toggleDarkMode(){
 
 }
 
-window.addEventListener("load",()=>{
-
-    let tema = localStorage.getItem("tema");
-
-    if(tema==="oscuro"){
-
-        document.body.classList.add("modo-oscuro");
-
-    }
-
-});
 /* =====================
 INICIAR
 ===================== */
