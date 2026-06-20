@@ -23,7 +23,19 @@ async function cargarBiblia(){
         );
 
         generarLibros();
+const ultima =
+JSON.parse(
+localStorage.getItem("ultimaLectura")
+);
 
+if(ultima){
+
+    abrirCapitulo(
+        ultima.libro,
+        ultima.capitulo
+    );
+
+}
     }catch(error){
 
         console.error(
@@ -372,67 +384,7 @@ function(){
 
 });
 
-function mostrarTestamento(testamento){
 
-    document
-    .getElementById("btnAntiguo")
-    .classList.remove("activo");
-
-    document
-    .getElementById("btnNuevo")
-    .classList.remove("activo");
-
-    if(testamento==="Antiguo"){
-
-        document
-        .getElementById("btnAntiguo")
-        .classList.add("activo");
-
-    }else{
-
-        document
-        .getElementById("btnNuevo")
-        .classList.add("activo");
-
-    }
-
-    const libros = [...new Set(
-
-        biblia
-        .filter(v => v.Testament === testamento)
-        .map(v => v.Book)
-
-    )];
-
-    const contenedor =
-    document.getElementById(
-    "contenedorLibros"
-    );
-
-    contenedor.innerHTML = "";
-
-    libros.forEach(libro=>{
-
-        const capitulos =
-        Math.max(
-            ...biblia
-            .filter(v=>v.Book===libro)
-            .map(v=>v.Chapter)
-        );
-
-        contenedor.innerHTML += `
-        <button
-        class="boton-libro"
-        onclick="verCapitulos('${libro}',${capitulos})">
-
-        ${libro}
-
-        </button>
-        `;
-
-    });
-
-}
 function capituloAnterior(){
 
     if(capituloActual > 1){
@@ -508,7 +460,27 @@ function toggleDarkMode(){
     }
 
 }
+window.addEventListener("load",()=>{
 
+    let tema =
+    localStorage.getItem("tema");
+
+    const btn =
+    document.getElementById("btnTema");
+
+    if(tema==="oscuro"){
+
+        document.body.classList.add(
+        "modo-oscuro"
+        );
+
+        if(btn){
+            btn.innerHTML="☀️";
+        }
+
+    }
+
+});
 /* =====================
 INICIAR
 ===================== */
