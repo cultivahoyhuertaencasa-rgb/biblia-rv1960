@@ -1,4 +1,4 @@
-?let biblia = [];
+let biblia = [];
 
 let libroActual = "";
 let capituloActual = 0;
