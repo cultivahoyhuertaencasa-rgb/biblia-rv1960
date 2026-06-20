@@ -18,7 +18,7 @@ async function cargarBiblia(){
         await respuesta.json();
 
         console.log(
-        "Vers�culos cargados:",
+        "Versículos cargados:",
         biblia.length
         );
 
@@ -101,7 +101,7 @@ function generarLibros(){
 }
 
 /* =====================
-VER CAP�TULOS
+VER CAPÍTULOS
 ===================== */
 
 function verCapitulos(
@@ -156,7 +156,7 @@ totalCapitulos
 }
 
 /* =====================
-ABRIR CAP�TULO
+ABRIR CAPÍTULO
 ===================== */
 
 function abrirCapitulo(
@@ -465,20 +465,24 @@ function capituloSiguiente(){
     }
 
 }
-    tama�oFuente += valor;
+   let tamañoFuente = 17;
 
-    if(tama�oFuente < 12){
-        tama�oFuente = 12;
+function cambiarFuente(valor){
+
+    tamañoFuente += valor;
+
+    if(tamañoFuente < 12){
+        tamañoFuente = 12;
     }
 
-    if(tama�oFuente > 40){
-        tama�oFuente = 40;
+    if(tamañoFuente > 40){
+        tamañoFuente = 40;
     }
 
     document.getElementById(
         "contenidoCapitulo"
     ).style.fontSize =
-    tama�oFuente + "px";
+    tamañoFuente + "px";
 
 }
 
