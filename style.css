@@ -277,3 +277,11 @@ margin-top:40px;
 padding:20px 10px;
 line-height:1.6;
 }
+body.modo-oscuro{
+    background:#121212;
+    color:#fff;
+}
+
+body.modo-oscuro header{
+    background:#1e1e1e;
+}
