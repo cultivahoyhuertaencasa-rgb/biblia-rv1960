@@ -465,7 +465,7 @@ function capituloSiguiente(){
     }
 
 }
-   let tamañoFuente = 17;
+let tamañoFuente = 17;
 
 function cambiarFuente(valor){
 
@@ -479,10 +479,11 @@ function cambiarFuente(valor){
         tamañoFuente = 40;
     }
 
-    document.getElementById(
-        "contenidoCapitulo"
-    ).style.fontSize =
-    tamañoFuente + "px";
+    document
+    .querySelectorAll("#contenidoCapitulo p")
+    .forEach(p => {
+        p.style.fontSize = tamañoFuente + "px";
+    });
 
 }
 
