@@ -14,8 +14,8 @@ BODY
 ========================= */
 
 body{
-background:#0f172a;
-color:#ffffff;
+background:#f4ecd8;
+color:#222222;
 min-height:100vh;
 padding:20px;
 }
@@ -149,20 +149,21 @@ LECTURA
 ========================= */
 
 #contenidoCapitulo{
-background:#1e293b;
+background:#fffaf0;
 padding:20px;
 border-radius:15px;
 margin-top:15px;
 }
 
 #contenidoCapitulo p{
+color:#222222;
 line-height:1.9;
 margin-bottom:12px;
 font-size:17px;
 }
 
 #contenidoCapitulo strong{
-color:#60a5fa;
+color:#8b5e00;
 margin-right:5px;
 }
 
