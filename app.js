@@ -266,7 +266,7 @@ capitulo
     document.getElementById(
     "contenidoCapitulo"
     ).innerHTML = html;
-
+aplicarTamanoFuente();
 }
 
 /* =====================
@@ -417,7 +417,10 @@ function capituloSiguiente(){
     }
 
 }
-let tamañoFuente = 17;
+let tamañoFuente =
+parseInt(
+localStorage.getItem("tamanoFuente")
+) || 17;
 
 function cambiarFuente(valor){
 
@@ -431,11 +434,12 @@ function cambiarFuente(valor){
         tamañoFuente = 40;
     }
 
-    document
-    .querySelectorAll("#contenidoCapitulo p")
-    .forEach(p => {
-        p.style.fontSize = tamañoFuente + "px";
-    });
+    localStorage.setItem(
+        "tamanoFuente",
+        tamañoFuente
+    );
+
+    aplicarTamanoFuente();
 
 }
 function toggleDarkMode(){
@@ -477,6 +481,68 @@ window.addEventListener("load",()=>{
         if(btn){
             btn.innerHTML="☀️";
         }
+
+    }
+
+});
+function aplicarTamanoFuente(){
+
+    document
+    .querySelectorAll(
+        "#contenidoCapitulo p"
+    )
+    .forEach(p=>{
+
+        p.style.fontSize =
+        tamañoFuente + "px";
+
+    });
+
+}
+function toggleMenu(){
+
+    const panel =
+    document.getElementById(
+    "panelConfig"
+    );
+
+    if(
+        panel.style.display ===
+        "block"
+    ){
+
+        panel.style.display =
+        "none";
+
+    }else{
+
+        panel.style.display =
+        "block";
+
+    }
+
+}
+document.addEventListener(
+"click",
+function(e){
+
+    const menu =
+    document.querySelector(
+    ".menu-config"
+    );
+
+    const panel =
+    document.getElementById(
+    "panelConfig"
+    );
+
+    if(
+        menu &&
+        !menu.contains(e.target)
+    ){
+
+        panel.style.display =
+        "none";
 
     }
 
