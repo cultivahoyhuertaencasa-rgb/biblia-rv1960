@@ -2,7 +2,10 @@ let biblia = [];
 
 let libroActual = "";
 let capituloActual = 0;
-
+let favoritos =
+JSON.parse(
+localStorage.getItem("favoritos")
+) || [];
 /* =====================
 CARGAR BIBLIA
 ===================== */
@@ -241,25 +244,42 @@ capitulo
 
         }
 
-        html += `
+   html += `
 
-        <p
-        style="
-        margin-bottom:12px;
-        line-height:1.8;
-        ">
+<p
+style="
+margin-bottom:12px;
+line-height:1.8;
+">
 
-        <strong>
+<button
+onclick="guardarFavorito(
+'${v.Book}',
+${v.Chapter},
+${v.Verse},
+\`${v.Text}\`
+)"
+style="
+background:none;
+border:none;
+cursor:pointer;
+font-size:18px;
+margin-right:5px;
+">
 
-        ${v.Verse}
+⭐
 
-        </strong>
+</button>
 
-        ${v.Text}
+<strong>
+${v.Verse}
+</strong>
 
-        </p>
+${v.Text}
 
-        `;
+</p>
+
+`;
 
     });
 
@@ -547,6 +567,84 @@ function(e){
     }
 
 });
+function guardarFavorito(
+libro,
+capitulo,
+versiculo,
+texto
+){
+
+    favoritos.push({
+        libro,
+        capitulo,
+        versiculo,
+        texto
+    });
+
+    localStorage.setItem(
+        "favoritos",
+        JSON.stringify(favoritos)
+    );
+
+    alert("Versículo guardado ⭐");
+
+}
+function mostrarFavoritos(){
+
+    document.getElementById(
+    "listaLibros"
+    ).style.display="none";
+
+    document.getElementById(
+    "capitulos"
+    ).style.display="none";
+
+    document.getElementById(
+    "textoCapitulo"
+    ).style.display="block";
+
+    document.getElementById(
+    "tituloCapitulo"
+    ).innerText =
+    "⭐ Favoritos";
+
+    let html = "";
+
+    favoritos.forEach(f=>{
+
+        html += `
+
+        <div
+        style="
+        margin-bottom:20px;
+        border-bottom:1px solid #ccc;
+        padding-bottom:10px;
+        ">
+
+        <b>
+
+        ${f.libro}
+        ${f.capitulo}:${f.versiculo}
+
+        </b>
+
+        <br><br>
+
+        ${f.texto}
+
+        </div>
+
+        `;
+
+    });
+
+    document.getElementById(
+    "contenidoCapitulo"
+    ).innerHTML =
+    html ||
+    "No hay favoritos";
+
+}
 /* =====================
 INICIAR
 ===================== */
