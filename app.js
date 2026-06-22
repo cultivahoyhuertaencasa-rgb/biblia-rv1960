@@ -662,4 +662,15 @@ function eliminarFavorito(indice){
 INICIAR
 ===================== */
 
-cargarBiblia();
+window.addEventListener("load", () => {
+
+    // registrar service worker (PWA)
+    if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("./service-worker.js")
+        .then(() => console.log("PWA activa"))
+        .catch(err => console.log("Error SW", err));
+    }
+
+    // cargar Biblia
+    cargarBiblia();
+});
