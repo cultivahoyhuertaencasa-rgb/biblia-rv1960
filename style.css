@@ -148,12 +148,16 @@ LECTURA
 ========================= */
 
 #contenidoCapitulo{
-background:#1e293b;
+background:#ffffff;
+color:#0f172a;
 padding:20px;
 border-radius:15px;
 margin-top:15px;
 }
-
+body.modo-oscuro #contenidoCapitulo{
+background:#111827;
+color:#e5e7eb;
+}
 #contenidoCapitulo p{
 line-height:1.9;
 margin-bottom:12px;
