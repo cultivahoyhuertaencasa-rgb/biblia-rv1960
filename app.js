@@ -246,30 +246,18 @@ capitulo
 
    html += `
 
-<p
-style="
-margin-bottom:12px;
-line-height:1.8;
-">
-
-<button
-onclick="guardarFavorito(
+<p onclick="guardarFavorito(
 '${v.Book}',
 ${v.Chapter},
 ${v.Verse},
 \`${v.Text}\`
 )"
 style="
-background:none;
-border:none;
+margin-bottom:12px;
+line-height:1.8;
 cursor:pointer;
-font-size:18px;
-margin-right:5px;
 ">
 
-⭐
-
-</button>
 
 <strong>
 ${v.Verse}
@@ -567,12 +555,18 @@ function(e){
     }
 
 });
-function guardarFavorito(
-libro,
-capitulo,
-versiculo,
-texto
-){
+function guardarFavorito(libro, capitulo, versiculo, texto){
+
+    const existe = favoritos.some(f =>
+        f.libro === libro &&
+        f.capitulo === capitulo &&
+        f.versiculo === versiculo
+    );
+
+    if(existe){
+        alert("Ya está en favoritos ⭐");
+        return;
+    }
 
     favoritos.push({
         libro,
@@ -581,13 +575,9 @@ texto
         texto
     });
 
-    localStorage.setItem(
-        "favoritos",
-        JSON.stringify(favoritos)
-    );
+    localStorage.setItem("favoritos", JSON.stringify(favoritos));
 
     alert("Versículo guardado ⭐");
-
 }
 function mostrarFavoritos(){
 
@@ -610,33 +600,43 @@ function mostrarFavoritos(){
 
     let html = "";
 
-    favoritos.forEach(f=>{
+favoritos.forEach((f, i)=>{
 
-        html += `
+    html += `
 
-        <div
-        style="
-        margin-bottom:20px;
-        border-bottom:1px solid #ccc;
-        padding-bottom:10px;
-        ">
+    <div
+    style="
+    margin-bottom:20px;
+    border-bottom:1px solid #ccc;
+    padding-bottom:10px;
+    ">
 
-        <b>
+    <b>
+    ${f.libro} ${f.capitulo}:${f.versiculo}
+    </b>
 
-        ${f.libro}
-        ${f.capitulo}:${f.versiculo}
+    <button
+    onclick="eliminarFavorito(${i})"
+    style="
+    float:right;
+    background:none;
+    border:none;
+    font-size:18px;
+    cursor:pointer;
+    color:red;
+    ">
+    ❌
+    </button>
 
-        </b>
+    <br><br>
 
-        <br><br>
+    ${f.texto}
 
-        ${f.texto}
+    </div>
 
-        </div>
+    `;
 
-        `;
-
-    });
+});
 
     document.getElementById(
     "contenidoCapitulo"
@@ -645,6 +645,19 @@ function mostrarFavoritos(){
     "No hay favoritos";
 
 }
+function eliminarFavorito(indice){
+
+    favoritos.splice(indice, 1);
+
+    localStorage.setItem(
+        "favoritos",
+        JSON.stringify(favoritos)
+    );
+
+    mostrarFavoritos();
+
+}
+
 /* =====================
 INICIAR
 ===================== */
