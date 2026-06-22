@@ -306,10 +306,10 @@ transition:0.3s;
 background:#1d4ed8;
 }
 .menu-config{
-position:relative;
-display:flex;
-justify-content:center;
-margin:15px 0;
+position:fixed;
+top:15px;
+left:15px;
+z-index:9999;
 }
 
 #btnConfig{
