@@ -1,4 +1,4 @@
-? /* =========================
+ /* =========================
 RESET
 ========================= */
 
@@ -14,8 +14,8 @@ BODY
 ========================= */
 
 body{
-background:#f4ecd8;
-color:#222222;
+background:#0f172a;
+color:#ffffff;
 min-height:100vh;
 padding:20px;
 }
@@ -32,7 +32,7 @@ h1{
 text-align:center;
 font-size:32px;
 margin-bottom:20px;
-color:#6b4423;
+color:#60a5fa;
 }
 
 /* =========================
@@ -46,9 +46,8 @@ border:none;
 outline:none;
 border-radius:12px;
 font-size:16px;
-background:#fffaf0;
-color:#222222;
-
+background:#1e293b;
+color:white;
 }
 
 #buscar::placeholder{
@@ -65,7 +64,7 @@ width:100%;
 
 h2{
 margin-bottom:15px;
-color:#6b4423;
+color:#93c5fd;
 }
 
 h3{
@@ -87,7 +86,7 @@ padding:12px 8px;
 margin:0;
 border:none;
 border-radius:10px;
-background:#8b5e3c;
+background:#1e293b;
 color:white;
 font-size:14px;
 cursor:pointer;
@@ -95,19 +94,19 @@ transition:.3s;
 }
 
 .boton-libro:hover{
-background:#6f472b;
+background:#334155;
 transform:translateY(-2px);
 }
 
 /* =========================
-BOT√ìN VOLVER
+BOT”N VOLVER
 ========================= */
 
 .volver{
 padding:12px 20px;
 border:none;
 border-radius:10px;
-background:#8b5e3c;
+background:#2563eb;
 color:white;
 cursor:pointer;
 margin-bottom:20px;
@@ -116,11 +115,11 @@ transition:0.3s;
 }
 
 .volver:hover{
-background:#6f472b;
+background:#1d4ed8;
 }
 
 /* =========================
-CAP√çTULOS
+CAPÕTULOS
 ========================= */
 
 #listaCapitulos{
@@ -134,7 +133,7 @@ gap:10px;
 padding:15px;
 border:none;
 border-radius:10px;
-background:#8b5e3c;
+background:#334155;
 color:white;
 font-size:16px;
 cursor:pointer;
@@ -142,7 +141,7 @@ transition:0.3s;
 }
 
 .boton-capitulo:hover{
-background:#6f472b;
+background:#475569;
 }
 
 /* =========================
@@ -150,29 +149,28 @@ LECTURA
 ========================= */
 
 #contenidoCapitulo{
-background:#fffaf0;
+background:#1e293b;
 padding:20px;
 border-radius:15px;
 margin-top:15px;
 }
 
 #contenidoCapitulo p{
-color:#222222;
 line-height:1.9;
 margin-bottom:12px;
 font-size:17px;
 }
 
 #contenidoCapitulo strong{
-color:#a16207;
+color:#60a5fa;
 margin-right:5px;
 }
 
 #contenidoCapitulo h3{
-color:#6b4423;
-border-bottom:1px solid #d6c7a1;
+color:#93c5fd;
 margin-top:25px;
 margin-bottom:15px;
+border-bottom:1px solid #334155;
 padding-bottom:8px;
 }
 
@@ -185,11 +183,11 @@ width:10px;
 }
 
 ::-webkit-scrollbar-track{
-background:#f4ecd8;
+background:#0f172a;
 }
 
 ::-webkit-scrollbar-thumb{
-background:#8b5e3c;
+background:#334155;
 border-radius:20px;
 }
 
@@ -198,7 +196,7 @@ background:#475569;
 }
 
 /* =========================
-M√ìVIL
+M”VIL
 ========================= */
 
 @media(max-width:600px){
@@ -233,7 +231,7 @@ flex:1;
 padding:15px;
 border:none;
 border-radius:12px;
-background:#8b5e3c;
+background:#1e293b;
 color:white;
 font-size:18px;
 cursor:pointer;
@@ -245,57 +243,30 @@ background:#334155;
 }
 
 .selector-testamento button.activo{
-background:#a16207;
+background:#2563eb;
 }
-
 .navegacion-capitulos{
 display:flex;
-justify-content:center;
-gap:15px;
+gap:10px;
 margin-bottom:15px;
 }
 
 .navegacion-capitulos button{
-padding:12px 20px;
+flex:1;
+padding:12px;
 border:none;
 border-radius:10px;
-background:#8b5e3c;
+background:#2563eb;
 color:white;
 cursor:pointer;
 font-size:16px;
 }
-body.modo-oscuro{
-    background:#121212;
-    color:#fff;
-}
 
-body.modo-oscuro header{
-    background:#1e1e1e;
-}
-.controles-fuente{
-display:flex;
-justify-content:center;
-align-items:center;
-gap:10px;
-margin:15px 0;
-}
-
-.controles-fuente button{
-min-width:50px;
-height:40px;
-border:none;
-border-radius:8px;
-cursor:pointer;
-background:#8b5e3c;
-color:white;
-font-size:16px;
-}
-
-.controles-fuente button:hover{
+.navegacion-capitulos button:hover{
 background:#1d4ed8;
 }
 /* =========================
-PIE DE P√ÅGINA
+PIE DE P¡GINA
 ========================= */
 
 .pie-app{
@@ -305,4 +276,80 @@ color:#94a3b8;
 margin-top:40px;
 padding:20px 10px;
 line-height:1.6;
+}
+/* =========================
+CONTROLES DE FUENTE
+========================= */
+
+.controles-fuente{
+display:flex;
+justify-content:center;
+gap:10px;
+margin:15px 0;
+}
+
+.controles-fuente button{
+padding:10px 20px;
+border:none;
+border-radius:10px;
+background:#2563eb;
+color:white;
+font-size:18px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.controles-fuente button:hover{
+background:#1d4ed8;
+}
+.menu-config{
+position:relative;
+display:flex;
+justify-content:center;
+margin:15px 0;
+}
+
+#btnConfig{
+width:50px;
+height:50px;
+border:none;
+border-radius:50%;
+background:#8b5e3c;
+color:white;
+font-size:20px;
+cursor:pointer;
+}
+
+.panel-config{
+display:none;
+position:absolute;
+top:60px;
+background:#fffaf0;
+padding:10px;
+border-radius:10px;
+box-shadow:0 2px 10px rgba(0,0,0,.2);
+gap:10px;
+z-index:1000;
+}
+
+.panel-config button{
+margin:3px;
+padding:8px 12px;
+border:none;
+border-radius:8px;
+background:#8b5e3c;
+color:white;
+}
+
+.panel-config button:hover{
+background:#6f472b;
+}
+
+body.modo-oscuro .panel-config{
+background:#1e293b;
+}
+
+body.modo-oscuro .panel-config button{
+background:#2563eb;
+color:white;
 }
