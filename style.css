@@ -14,8 +14,8 @@ BODY
 ========================= */
 
 body{
-background:#0f172a;
-color:#ffffff;
+background:#f8fafc;
+color:#0f172a;
 min-height:100vh;
 padding:20px;
 }
@@ -361,10 +361,12 @@ body.modo-oscuro{
     background:#0b0f19;
     color:#e5e7eb;
 }
+}
 
 /* contenedores */
 body.modo-oscuro #contenidoCapitulo{
     background:#111827;
+    color:#e5e7eb;
 }
 
 body.modo-oscuro #buscar{
@@ -372,14 +374,12 @@ body.modo-oscuro #buscar{
     color:#fff;
 }
 
-/* botones */
 body.modo-oscuro .boton-libro,
 body.modo-oscuro .boton-capitulo,
 body.modo-oscuro .selector-testamento button{
     background:#1f2937;
     color:#fff;
 }
-
 body.modo-oscuro .boton-libro:hover,
 body.modo-oscuro .boton-capitulo:hover{
     background:#374151;
