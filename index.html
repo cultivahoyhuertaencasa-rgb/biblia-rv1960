@@ -10,7 +10,29 @@
 
 </head>
 <body>
+<div class="menu-config">
 
+<button id="btnConfig" onclick="toggleMenu()">
+⚙️
+</button>
+
+<div id="panelConfig" class="panel-config">
+
+<button onclick="cambiarFuente(-2)">
+A-
+</button>
+
+<button onclick="cambiarFuente(2)">
+A+
+</button>
+
+<button id="btnTema"
+onclick="toggleDarkMode()">
+ ☀️
+</button>
+
+</div>
+</div>
 <header>
 
 <h1>BIBLIA RV 1960</h1>
@@ -96,29 +118,6 @@ onclick="volverCapitulos()">
 Siguiente 
 </button>
 
-</div>
-<div class="menu-config">
-
-<button id="btnConfig" onclick="toggleMenu()">
-⚙️
-</button>
-
-<div id="panelConfig" class="panel-config">
-
-<button onclick="cambiarFuente(-2)">
-A-
-</button>
-
-<button onclick="cambiarFuente(2)">
-A+
-</button>
-
-<button id="btnTema"
-onclick="toggleDarkMode()">
- ☀️
-</button>
-
-</div>
 </div>
 
 <h2 id="tituloCapitulo"></h2>
