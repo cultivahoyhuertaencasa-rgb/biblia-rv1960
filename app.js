@@ -881,10 +881,16 @@ function leerCapitulo() {
 
         if (capituloActual < ultimoCapitulo) {
 
-            setTimeout(() => {
-                abrirCapitulo(libroActual, capituloActual + 1);
-                leerCapitulo();
-            }, 800);
+          setTimeout(() => {
+
+    abrirCapitulo(libroActual, capituloActual + 1);
+
+    // esperar a que el DOM actualice
+    setTimeout(() => {
+        leerCapitulo();
+    }, 500);
+
+}, 800);
 
         }
     };
@@ -892,7 +898,24 @@ function leerCapitulo() {
     // 👇 ESTO VA AL FINAL
     speechSynthesis.speak(lectura);
 }
+function siguienteCapituloAutomatico() {
 
+    const ultimoCapitulo = Math.max(
+        ...biblia
+        .filter(v => v.Book === libroActual)
+        .map(v => v.Chapter)
+    );
+
+    if (capituloActual < ultimoCapitulo) {
+
+        abrirCapitulo(libroActual, capituloActual + 1);
+
+        setTimeout(() => {
+            leerCapitulo();
+        }, 600);
+
+    }
+}
 function detenerLectura() {
 
     speechSynthesis.cancel();
