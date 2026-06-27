@@ -1011,3 +1011,27 @@ function agregarNota(){
     );
 
 }
+function abrirNota(libro, capitulo, versiculo){
+    const clave = `${libro}_${capitulo}_${versiculo}`;
+    const nota = localStorage.getItem(clave) || "";
+
+    document.getElementById("textoNota").value = nota;
+    document.getElementById("panelNota").style.display = "block";
+}
+function guardarNota(libro, capitulo, versiculo){
+    const clave = `${libro}_${capitulo}_${versiculo}`;
+    const nota = document.getElementById("textoNota").value;
+
+    localStorage.setItem(clave, nota);
+    alert("Nota guardada ✔️");
+}
+function eliminarNota(libro, capitulo, versiculo){
+    const clave = `${libro}_${capitulo}_${versiculo}`;
+    localStorage.removeItem(clave);
+
+    document.getElementById("textoNota").value = "";
+    alert("Nota eliminada 🗑️");
+}
+function cerrarNota(){
+    document.getElementById("panelNota").style.display = "none";
+}
