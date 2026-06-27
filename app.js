@@ -409,7 +409,7 @@ speechSynthesis.cancel();
 }
 
 function capituloSiguiente(){
-
+speechSynthesis.cancel();
     const ultimoCapitulo =
     Math.max(
         ...biblia
@@ -709,10 +709,17 @@ function leerCapitulo() {
 
     vozActual = lectura;
     leyendo = true;
+document.getElementById("btnLeer").innerHTML = "🔊 Leyendo...";
+document.getElementById("btnLeer").disabled = true;
+    
+  lectura.onend = function () {
 
-    lectura.onend = function () {
-        leyendo = false;
-    };
+    leyendo = false;
+
+    document.getElementById("btnLeer").innerHTML = "🔊 Leer";
+    document.getElementById("btnLeer").disabled = false;
+
+};
 
     speechSynthesis.speak(lectura);
 }
@@ -723,6 +730,10 @@ function detenerLectura() {
 
     leyendo = false;
     vozActual = null;
+
+    document.getElementById("btnLeer").innerHTML = "🔊 Leer";
+    document.getElementById("btnLeer").disabled = false;
+
 }
 
 function pausarLectura() {
