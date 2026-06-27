@@ -718,6 +718,25 @@ function leerCapitulo() {
 }
 
 function detenerLectura() {
+
     speechSynthesis.cancel();
+
     leyendo = false;
+    vozActual = null;
+}
+
+function pausarLectura() {
+
+    if (speechSynthesis.speaking && !speechSynthesis.paused) {
+        speechSynthesis.pause();
+    }
+
+}
+
+function continuarLectura() {
+
+    if (speechSynthesis.paused) {
+        speechSynthesis.resume();
+    }
+
 }
