@@ -6,6 +6,8 @@ let favoritos =
 JSON.parse(
 localStorage.getItem("favoritos")
 ) || [];
+let leyendo = false;
+let vozActual = null;
 /* =====================
 CARGAR BIBLIA
 ===================== */
@@ -282,7 +284,7 @@ VOLVER
 ===================== */
 
 function volverLibros(){
-
+speechSynthesis.cancel();
     document.getElementById(
     "listaLibros"
     ).style.display = "block";
@@ -294,7 +296,7 @@ function volverLibros(){
 }
 
 function volverCapitulos(){
-
+speechSynthesis.cancel();
     document.getElementById(
     "textoCapitulo"
     ).style.display = "none";
@@ -394,7 +396,7 @@ function(){
 
 
 function capituloAnterior(){
-
+speechSynthesis.cancel();
     if(capituloActual > 1){
 
         abrirCapitulo(
@@ -674,3 +676,48 @@ window.addEventListener("load", () => {
     // cargar Biblia
     cargarBiblia();
 });
+function leerCapitulo() {
+
+    if (!("speechSynthesis" in window)) {
+        alert("Tu navegador no soporta lectura por voz.");
+        return;
+    }
+
+    speechSynthesis.cancel();
+
+    let titulo = document.getElementById("tituloCapitulo").innerText;
+    let texto = document.getElementById("contenidoCapitulo").innerText;
+
+    let lectura = new SpeechSynthesisUtterance(
+        titulo + ". " + texto
+    );
+
+    // Buscar una voz en español
+    const voces = speechSynthesis.getVoices();
+    const vozEspanol = voces.find(v =>
+        v.lang.startsWith("es")
+    );
+
+    if (vozEspanol) {
+        lectura.voice = vozEspanol;
+    }
+
+    lectura.lang = "es-ES";
+    lectura.rate = 1;
+    lectura.pitch = 1;
+    lectura.volume = 1;
+
+    vozActual = lectura;
+    leyendo = true;
+
+    lectura.onend = function () {
+        leyendo = false;
+    };
+
+    speechSynthesis.speak(lectura);
+}
+
+function detenerLectura() {
+    speechSynthesis.cancel();
+    leyendo = false;
+}
