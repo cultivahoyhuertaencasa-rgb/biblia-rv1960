@@ -23,11 +23,15 @@ async function cargarBiblia(){
         await respuesta.json();
 
         console.log(
-        "Versículos cargados:",
-        biblia.length
-        );
+    "Versículos cargados:",
+    biblia.length
+);
 
-        generarLibros();
+generarLibros();
+
+// Mostrar el versículo del día
+mostrarVersiculoDelDia();
+
 const ultima =
 JSON.parse(
 localStorage.getItem("ultimaLectura")
@@ -474,27 +478,7 @@ function toggleDarkMode(){
     }
 
 }
-window.addEventListener("load",()=>{
 
-    let tema =
-    localStorage.getItem("tema");
-
-    const btn =
-    document.getElementById("btnTema");
-
-    if(tema==="oscuro"){
-
-        document.body.classList.add(
-        "modo-oscuro"
-        );
-
-        if(btn){
-            btn.innerHTML="☀️";
-        }
-
-    }
-
-});
 function aplicarTamanoFuente(){
 
     document
@@ -659,23 +643,42 @@ function eliminarFavorito(indice){
     mostrarFavoritos();
 
 }
-
-/* =====================
-INICIAR
-===================== */
-
 window.addEventListener("load", () => {
 
-    // registrar service worker (PWA)
+    // Tema
+    let tema = localStorage.getItem("tema");
+
+    const btn = document.getElementById("btnTema");
+
+    if (tema === "oscuro") {
+
+        document.body.classList.add("modo-oscuro");
+
+        if (btn) {
+            btn.innerHTML = "☀️";
+        }
+
+    }
+
+    // Service Worker
     if ("serviceWorker" in navigator) {
+
         navigator.serviceWorker.register("./service-worker.js")
         .then(() => console.log("PWA activa"))
         .catch(err => console.log("Error SW", err));
+ 
+    
     }
-
-    // cargar Biblia
+/* =====================
+INICIAR
+===================== */
+    
+    // Cargar Biblia
     cargarBiblia();
+
 });
+
+
 function leerCapitulo() {
 
     if (!("speechSynthesis" in window)) {
@@ -749,5 +752,119 @@ function continuarLectura() {
     if (speechSynthesis.paused) {
         speechSynthesis.resume();
     }
+
+}
+function mostrarVersiculoDelDia(){
+
+    if(biblia.length === 0){
+
+        setTimeout(
+            mostrarVersiculoDelDia,
+            500
+        );
+
+        return;
+    }
+
+    const hoy = new Date();
+
+    const clave =
+        hoy.getFullYear() +
+        "-" +
+        (hoy.getMonth()+1) +
+        "-" +
+        hoy.getDate();
+
+    let guardado =
+    JSON.parse(
+        localStorage.getItem("versiculoDia")
+    );
+
+    if(guardado && guardado.fecha === clave){
+
+        document.getElementById(
+            "textoVersiculoDia"
+        ).innerText = guardado.texto;
+
+        document.getElementById(
+            "referenciaVersiculoDia"
+        ).innerText = guardado.referencia;
+
+        return;
+
+    }
+
+   const indice =
+Math.floor(
+    Math.random() * biblia.length
+);
+
+const v = biblia[indice];
+
+const texto = v.Text;
+
+const referencia =
+v.Book +
+" " +
+v.Chapter +
+":" +
+v.Verse;
+
+    document.getElementById(
+        "textoVersiculoDia"
+    ).innerText = texto;
+
+    document.getElementById(
+        "referenciaVersiculoDia"
+    ).innerText = referencia;
+
+    localStorage.setItem(
+        "versiculoDia",
+        JSON.stringify({
+
+            fecha: clave,
+            texto: texto,
+            referencia: referencia
+
+        })
+    );
+
+}
+function copiarVersiculoDia(){
+
+    const texto =
+    document.getElementById(
+        "textoVersiculoDia"
+    ).innerText;
+
+    const referencia =
+    document.getElementById(
+        "referenciaVersiculoDia"
+    ).innerText;
+
+    navigator.clipboard.writeText(
+        texto + "\n\n" + referencia
+    );
+
+    alert("Versículo copiado.");
+}
+function leerVersiculoDia(){
+
+    speechSynthesis.cancel();
+
+    let lectura =
+    new SpeechSynthesisUtterance(
+
+        document.getElementById(
+        "textoVersiculoDia"
+        ).innerText
+
+    );
+
+    lectura.lang = "es-ES";
+
+    speechSynthesis.speak(
+        lectura
+    );
 
 }
