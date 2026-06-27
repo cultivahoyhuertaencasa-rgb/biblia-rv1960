@@ -854,16 +854,6 @@ function leerCapitulo() {
         titulo + ". " + texto
     );
 
-    // Buscar una voz en español
-    const voces = speechSynthesis.getVoices();
-    const vozEspanol = voces.find(v =>
-        v.lang.startsWith("es")
-    );
-
-    if (vozEspanol) {
-        lectura.voice = vozEspanol;
-    }
-
     lectura.lang = "es-ES";
     lectura.rate = 1;
     lectura.pitch = 1;
@@ -871,18 +861,35 @@ function leerCapitulo() {
 
     vozActual = lectura;
     leyendo = true;
-document.getElementById("btnLeer").innerHTML = "🔊 Leyendo...";
-document.getElementById("btnLeer").disabled = true;
-    
-  lectura.onend = function () {
 
-    leyendo = false;
+    document.getElementById("btnLeer").innerHTML = "🔊 Leyendo...";
+    document.getElementById("btnLeer").disabled = true;
 
-    document.getElementById("btnLeer").innerHTML = "🔊 Leer";
-    document.getElementById("btnLeer").disabled = false;
+    // 👇 AQUÍ VA EL onend
+    lectura.onend = function () {
 
-};
+        leyendo = false;
 
+        document.getElementById("btnLeer").innerHTML = "🔊 Leer";
+        document.getElementById("btnLeer").disabled = false;
+
+        const ultimoCapitulo = Math.max(
+            ...biblia
+            .filter(v => v.Book === libroActual)
+            .map(v => v.Chapter)
+        );
+
+        if (capituloActual < ultimoCapitulo) {
+
+            setTimeout(() => {
+                abrirCapitulo(libroActual, capituloActual + 1);
+                leerCapitulo();
+            }, 800);
+
+        }
+    };
+
+    // 👇 ESTO VA AL FINAL
     speechSynthesis.speak(lectura);
 }
 
