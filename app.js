@@ -623,7 +623,17 @@ cursor:pointer;
     <b>
     ${f.libro} ${f.capitulo}:${f.versiculo}
     </b>
-
+<button
+onclick="event.stopPropagation(); abrirNotaDesdeFavorito('${f.libro}', ${f.capitulo}, ${f.versiculo}, \`${f.texto}\`)"
+style="
+margin-left:10px;
+background:none;
+border:none;
+cursor:pointer;
+font-size:18px;
+">
+📝
+</button>
     <button
     onclick="eliminarFavorito(${i})"
     style="
