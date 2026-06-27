@@ -1011,12 +1011,16 @@ function agregarNota(){
     );
 
 }
-function abrirNota(libro, capitulo, versiculo){
-    const clave = `${libro}_${capitulo}_${versiculo}`;
-    const nota = localStorage.getItem(clave) || "";
+function abrirNota(){
+    if(!versiculoSeleccionado) return;
 
+    const v = versiculoSeleccionado;
+    const clave = `${v.libro}_${v.capitulo}_${v.versiculo}`;
+
+    const nota = localStorage.getItem(clave) || "";
     document.getElementById("textoNota").value = nota;
-    document.getElementById("panelNota").style.display = "block";
+
+    document.getElementById("ventanaNota").style.display = "block";
 }
 function guardarNota(libro, capitulo, versiculo){
     const clave = `${libro}_${capitulo}_${versiculo}`;
