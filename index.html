@@ -187,21 +187,54 @@ if ("serviceWorker" in navigator) {
 </script>
  <div id="menuVersiculo" class="menu-versiculo">
 
-<button onclick="compartirVersiculoSeleccionado()">
-compartir
-</button>
-  
-<button onclick="agregarNota()">
- Agregar nota
-</button>
-  
-<button onclick="copiarVersiculoSeleccionado()">
-copiar
-</button>
+ <button onclick="compartirVersiculoSeleccionado()">
+        📤 Compartir
+    </button>
 
-<button onclick="cerrarMenuVersiculo()">
-cancelar
-</button>
+    <button onclick="copiarVersiculoSeleccionado()">
+        📋 Copiar
+    </button>
+
+    <button onclick="abrirNota()">
+        📝 Agregar nota
+    </button>
+
+    <button onclick="cerrarMenuVersiculo()">
+        ❌ Cancelar
+    </button>
+
+
+</div>
+ <div id="ventanaNota" class="ventana-nota">
+
+    <div class="contenido-nota">
+
+        <h3 id="tituloNota">
+            📝 Nota
+        </h3>
+
+        <textarea
+            id="textoNota"
+            placeholder="Escribe aquí tu nota..."
+        ></textarea>
+
+        <div class="botones-nota">
+
+            <button onclick="guardarNota()">
+                💾 Guardar
+            </button>
+
+            <button onclick="eliminarNota()">
+                🗑 Eliminar
+            </button>
+
+            <button onclick="cerrarNota()">
+                ❌ Cancelar
+            </button>
+
+        </div>
+
+    </div>
 
 </div>
 </body>
