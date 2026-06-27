@@ -612,11 +612,13 @@ favoritos.forEach((f, i)=>{
     html += `
 
     <div
-    style="
-    margin-bottom:20px;
-    border-bottom:1px solid #ccc;
-    padding-bottom:10px;
-    ">
+onclick="seleccionarFavorito('${f.libro}', ${f.capitulo}, ${f.versiculo}, \`${f.texto}\`)"
+style="
+margin-bottom:20px;
+border-bottom:1px solid #ccc;
+padding-bottom:10px;
+cursor:pointer;
+">
 
     <b>
     ${f.libro} ${f.capitulo}:${f.versiculo}
@@ -690,7 +692,7 @@ window.addEventListener("load", () => {
  
     
     }
-   
+
 /* =====================
 INICIAR
 ===================== */
@@ -699,7 +701,17 @@ INICIAR
     cargarBiblia();
 
 });
+function seleccionarFavorito(libro, capitulo, versiculo, texto){
 
+    versiculoSeleccionado = {
+        libro,
+        capitulo,
+        versiculo,
+        texto
+    };
+
+    abrirCapitulo(libro, capitulo);
+}
  function mostrarVersiculoDelDia(){
 
     if(biblia.length === 0){
@@ -1038,6 +1050,7 @@ function eliminarNota(libro, capitulo, versiculo){
     document.getElementById("textoNota").value = "";
     alert("Nota eliminada 🗑️");
 }
+
 function cerrarNota(){
     document.getElementById("ventanaNota").style.display = "none";
 }
