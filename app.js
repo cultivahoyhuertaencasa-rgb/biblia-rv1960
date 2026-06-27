@@ -669,92 +669,7 @@ window.addEventListener("load", () => {
  
     
     }
-/* =====================
-INICIAR
-===================== */
-    
-    // Cargar Biblia
-    cargarBiblia();
-
-});
-
-
-function leerCapitulo() {
-
-    if (!("speechSynthesis" in window)) {
-        alert("Tu navegador no soporta lectura por voz.");
-        return;
-    }
-
-    speechSynthesis.cancel();
-
-    let titulo = document.getElementById("tituloCapitulo").innerText;
-    let texto = document.getElementById("contenidoCapitulo").innerText;
-
-    let lectura = new SpeechSynthesisUtterance(
-        titulo + ". " + texto
-    );
-
-    // Buscar una voz en español
-    const voces = speechSynthesis.getVoices();
-    const vozEspanol = voces.find(v =>
-        v.lang.startsWith("es")
-    );
-
-    if (vozEspanol) {
-        lectura.voice = vozEspanol;
-    }
-
-    lectura.lang = "es-ES";
-    lectura.rate = 1;
-    lectura.pitch = 1;
-    lectura.volume = 1;
-
-    vozActual = lectura;
-    leyendo = true;
-document.getElementById("btnLeer").innerHTML = "🔊 Leyendo...";
-document.getElementById("btnLeer").disabled = true;
-    
-  lectura.onend = function () {
-
-    leyendo = false;
-
-    document.getElementById("btnLeer").innerHTML = "🔊 Leer";
-    document.getElementById("btnLeer").disabled = false;
-
-};
-
-    speechSynthesis.speak(lectura);
-}
-
-function detenerLectura() {
-
-    speechSynthesis.cancel();
-
-    leyendo = false;
-    vozActual = null;
-
-    document.getElementById("btnLeer").innerHTML = "🔊 Leer";
-    document.getElementById("btnLeer").disabled = false;
-
-}
-
-function pausarLectura() {
-
-    if (speechSynthesis.speaking && !speechSynthesis.paused) {
-        speechSynthesis.pause();
-    }
-
-}
-
-function continuarLectura() {
-
-    if (speechSynthesis.paused) {
-        speechSynthesis.resume();
-    }
-
-}
-function mostrarVersiculoDelDia(){
+    function mostrarVersiculoDelDia(){
 
     if(biblia.length === 0){
 
@@ -868,3 +783,89 @@ function leerVersiculoDia(){
     );
 
 }
+/* =====================
+INICIAR
+===================== */
+    
+    // Cargar Biblia
+    cargarBiblia();
+
+});
+
+
+function leerCapitulo() {
+
+    if (!("speechSynthesis" in window)) {
+        alert("Tu navegador no soporta lectura por voz.");
+        return;
+    }
+
+    speechSynthesis.cancel();
+
+    let titulo = document.getElementById("tituloCapitulo").innerText;
+    let texto = document.getElementById("contenidoCapitulo").innerText;
+
+    let lectura = new SpeechSynthesisUtterance(
+        titulo + ". " + texto
+    );
+
+    // Buscar una voz en español
+    const voces = speechSynthesis.getVoices();
+    const vozEspanol = voces.find(v =>
+        v.lang.startsWith("es")
+    );
+
+    if (vozEspanol) {
+        lectura.voice = vozEspanol;
+    }
+
+    lectura.lang = "es-ES";
+    lectura.rate = 1;
+    lectura.pitch = 1;
+    lectura.volume = 1;
+
+    vozActual = lectura;
+    leyendo = true;
+document.getElementById("btnLeer").innerHTML = "🔊 Leyendo...";
+document.getElementById("btnLeer").disabled = true;
+    
+  lectura.onend = function () {
+
+    leyendo = false;
+
+    document.getElementById("btnLeer").innerHTML = "🔊 Leer";
+    document.getElementById("btnLeer").disabled = false;
+
+};
+
+    speechSynthesis.speak(lectura);
+}
+
+function detenerLectura() {
+
+    speechSynthesis.cancel();
+
+    leyendo = false;
+    vozActual = null;
+
+    document.getElementById("btnLeer").innerHTML = "🔊 Leer";
+    document.getElementById("btnLeer").disabled = false;
+
+}
+
+function pausarLectura() {
+
+    if (speechSynthesis.speaking && !speechSynthesis.paused) {
+        speechSynthesis.pause();
+    }
+
+}
+
+function continuarLectura() {
+
+    if (speechSynthesis.paused) {
+        speechSynthesis.resume();
+    }
+
+}
+
