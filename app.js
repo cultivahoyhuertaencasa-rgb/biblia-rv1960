@@ -669,7 +669,17 @@ window.addEventListener("load", () => {
  
     
     }
-    function mostrarVersiculoDelDia(){
+   
+/* =====================
+INICIAR
+===================== */
+    
+    // Cargar Biblia
+    cargarBiblia();
+
+});
+
+ function mostrarVersiculoDelDia(){
 
     if(biblia.length === 0){
 
@@ -783,16 +793,6 @@ function leerVersiculoDia(){
     );
 
 }
-/* =====================
-INICIAR
-===================== */
-    
-    // Cargar Biblia
-    cargarBiblia();
-
-});
-
-
 function leerCapitulo() {
 
     if (!("speechSynthesis" in window)) {
