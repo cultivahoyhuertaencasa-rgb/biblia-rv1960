@@ -883,4 +883,91 @@ function continuarLectura() {
     }
 
 }
+function iniciarPresionado(libro,capitulo,versiculo,texto){
 
+    versiculoSeleccionado={
+        libro,
+        capitulo,
+        versiculo,
+        texto
+    };
+
+    temporizadorPresionado=setTimeout(()=>{
+
+        document.getElementById(
+            "menuVersiculo"
+        ).style.display="block";
+
+    },1000);
+
+}
+
+function cancelarPresionado(){
+
+    clearTimeout(
+        temporizadorPresionado
+    );
+
+}
+
+function cerrarMenuVersiculo(){
+
+    document.getElementById(
+        "menuVersiculo"
+    ).style.display="none";
+
+}
+async function compartirVersiculoSeleccionado(){
+
+    cerrarMenuVersiculo();
+
+    const v=versiculoSeleccionado;
+
+    const mensaje=
+`${v.libro} ${v.capitulo}:${v.versiculo}
+
+${v.texto}
+
+📖 Biblia RV1960
+
+https://cultivahoyhuertaencasa-rgb.github.io/biblia-rv1960/`;
+
+    if(navigator.share){
+
+        try{
+
+            await navigator.share({
+
+                title:`${v.libro} ${v.capitulo}:${v.versiculo}`,
+                text:mensaje
+
+            });
+
+        }catch(e){}
+
+    }else{
+
+        navigator.clipboard.writeText(mensaje);
+
+        alert("Versículo copiado.");
+
+    }
+
+}
+function copiarVersiculoSeleccionado(){
+
+    cerrarMenuVersiculo();
+
+    const v=versiculoSeleccionado;
+
+    navigator.clipboard.writeText(
+
+`${v.libro} ${v.capitulo}:${v.versiculo}
+
+${v.texto}`
+
+    );
+
+    alert("Versículo copiado.");
+
+}
