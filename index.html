@@ -108,27 +108,33 @@ style="display:none;">
 <button
 class="volver"
 onclick="volverCapitulos()">
-
  Volver
-
 </button>
+ 
 <div class="navegacion-capitulos">
 
 <button onclick="capituloAnterior()">
- Anterior
+⬅ Anterior
+</button>
+
+<button id="btnLeer" onclick="leerCapitulo()">
+🔊 Leer
+</button>
+
+<button id="btnDetener" onclick="detenerLectura()">
+⏹ Detener
 </button>
 
 <button onclick="capituloSiguiente()">
-Siguiente 
+Siguiente ➡
 </button>
 
 </div>
 
 <h2 id="tituloCapitulo"></h2>
-
 <div id="contenidoCapitulo"></div>
-
 </section>
+ 
 <footer class="pie-app">
 
 Biblia RV1960 © 2026
