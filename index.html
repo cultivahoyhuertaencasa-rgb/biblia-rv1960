@@ -1,6 +1,7 @@
  <!DOCTYPE html>
 <html lang="es">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -48,7 +49,27 @@ placeholder="Buscar versículo..."
 >
 
 </header>
+<div id="versiculoDia" class="versiculo-dia">
 
+    <h3>🌞 Versículo del día</h3>
+
+    <p id="textoVersiculoDia"></p>
+
+    <small id="referenciaVersiculoDia"></small>
+
+    <div class="acciones-versiculo">
+
+        <button onclick="copiarVersiculoDia()">
+            📋 Copiar
+        </button>
+
+        <button onclick="leerVersiculoDia()">
+            🔊 Escuchar
+        </button>
+
+    </div>
+
+</div>
 <!-- LIBROS -->
 <div id="listaLibros">
 
