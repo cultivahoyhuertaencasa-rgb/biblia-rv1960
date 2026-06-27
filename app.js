@@ -8,6 +8,8 @@ localStorage.getItem("favoritos")
 ) || [];
 let leyendo = false;
 let vozActual = null;
+let temporizadorPresionado;
+let versiculoSeleccionado = null;
 /* =====================
 CARGAR BIBLIA
 ===================== */
@@ -252,7 +254,22 @@ capitulo
 
    html += `
 
-<p onclick="guardarFavorito(
+<p
+onmousedown="iniciarPresionado(
+'${v.Book}',
+${v.Chapter},
+${v.Verse},
+\`${v.Text}\`
+)"
+ontouchstart="iniciarPresionado(
+'${v.Book}',
+${v.Chapter},
+${v.Verse},
+\`${v.Text}\`
+)"
+onmouseup="cancelarPresionado()"
+ontouchend="cancelarPresionado()"
+onclick="guardarFavorito(
 '${v.Book}',
 ${v.Chapter},
 ${v.Verse},
@@ -264,13 +281,11 @@ line-height:1.8;
 cursor:pointer;
 ">
 
-
 <strong>
 ${v.Verse}
 </strong>
 
 ${v.Text}
-
 </p>
 
 `;
