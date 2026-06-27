@@ -402,3 +402,38 @@ body.modo-oscuro #btnTema{
 background:#2563eb;
 color:white;
 }
+.versiculo-dia{
+
+background:#fff8dc;
+border-radius:12px;
+padding:15px;
+margin:15px;
+box-shadow:0 2px 8px rgba(0,0,0,.15);
+text-align:center;
+
+}
+
+.versiculo-dia h3{
+
+margin-bottom:10px;
+
+}
+
+.versiculo-dia p{
+
+font-style:italic;
+line-height:1.6;
+
+}
+
+.acciones-versiculo{
+
+margin-top:15px;
+
+}
+
+.acciones-versiculo button{
+
+margin:5px;
+
+}
