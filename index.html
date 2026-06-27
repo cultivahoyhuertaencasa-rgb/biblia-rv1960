@@ -220,11 +220,10 @@ if ("serviceWorker" in navigator) {
 
         <div class="botones-nota">
 
-            <button onclick="guardarNota()">
+          <button onclick="guardarNota(versiculoSeleccionado.libro, versiculoSeleccionado.capitulo, versiculoSeleccionado.versiculo)">
                 💾 Guardar
             </button>
-
-            <button onclick="eliminarNota()">
+         <button onclick="eliminarNota(versiculoSeleccionado.libro, versiculoSeleccionado.capitulo, versiculoSeleccionado.versiculo)">
                 🗑 Eliminar
             </button>
 
