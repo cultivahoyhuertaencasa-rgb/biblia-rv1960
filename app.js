@@ -251,7 +251,12 @@ capitulo
             `;
 
         }
+const clave =
+`${v.Book}_${v.Chapter}_${v.Verse}`;
 
+const tieneNota =
+localStorage.getItem(clave);
+        
    html += `
 
 <p
@@ -286,6 +291,7 @@ ${v.Verse}
 </strong>
 
 ${v.Text}
+${tieneNota ? " 📝" : ""}
 </p>
 
 `;
@@ -969,5 +975,39 @@ ${v.texto}`
     );
 
     alert("Versículo copiado.");
+
+}
+function agregarNota(){
+
+    cerrarMenuVersiculo();
+
+    const v = versiculoSeleccionado;
+
+    const clave =
+    `${v.libro}_${v.capitulo}_${v.versiculo}`;
+
+    const notaAnterior =
+    localStorage.getItem(clave) || "";
+
+    const nota = prompt(
+        "Escribe tu nota:",
+        notaAnterior
+    );
+
+    if(nota === null){
+        return;
+    }
+
+    localStorage.setItem(
+        clave,
+        nota
+    );
+
+    alert("Nota guardada.");
+
+    abrirCapitulo(
+        libroActual,
+        capituloActual
+    );
 
 }
