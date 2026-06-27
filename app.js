@@ -711,6 +711,11 @@ function seleccionarFavorito(libro, capitulo, versiculo, texto){
     };
 
     abrirCapitulo(libro, capitulo);
+
+    // abrir nota automáticamente (opcional)
+    setTimeout(() => {
+        abrirNota();
+    }, 300);
 }
  function mostrarVersiculoDelDia(){
 
