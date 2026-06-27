@@ -454,3 +454,37 @@ body.modo-oscuro .acciones-versiculo button{
     color:white;
     border:none;
 }
+.menu-versiculo{
+
+display:none;
+position:fixed;
+left:50%;
+bottom:20px;
+transform:translateX(-50%);
+background:white;
+padding:15px;
+border-radius:15px;
+box-shadow:0 4px 15px rgba(0,0,0,.3);
+z-index:9999;
+width:260px;
+
+}
+
+.menu-versiculo button{
+
+width:100%;
+padding:12px;
+margin:6px 0;
+border:none;
+border-radius:10px;
+background:#2563eb;
+color:white;
+cursor:pointer;
+
+}
+
+body.modo-oscuro .menu-versiculo{
+
+background:#1f2937;
+
+}
