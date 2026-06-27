@@ -1018,9 +1018,11 @@ function abrirNota(){
     const clave = `${v.libro}_${v.capitulo}_${v.versiculo}`;
 
     const nota = localStorage.getItem(clave) || "";
+
     document.getElementById("textoNota").value = nota;
 
-    document.getElementById("ventanaNota").style.display = "block";
+    const ventana = document.getElementById("ventanaNota");
+    ventana.style.display = "flex";
 }
 function guardarNota(libro, capitulo, versiculo){
     const clave = `${libro}_${capitulo}_${versiculo}`;
@@ -1037,5 +1039,12 @@ function eliminarNota(libro, capitulo, versiculo){
     alert("Nota eliminada 🗑️");
 }
 function cerrarNota(){
-    document.getElementById("panelNota").style.display = "none";
+    document.getElementById("ventanaNota").style.display = "none";
 }
+document.getElementById("ventanaNota").addEventListener("click", function(e){
+
+    if(e.target === this){
+        cerrarNota();
+    }
+
+});
