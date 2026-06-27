@@ -11,6 +11,8 @@
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#1e293b">
 </head>
+
+
 <body>
 <div class="menu-config">
 
@@ -181,7 +183,23 @@ if ("serviceWorker" in navigator) {
       .catch(err => console.error("Error SW:", err));
   });
 }
+
 </script>
+ <div id="menuVersiculo" class="menu-versiculo">
+
+<button onclick="compartirVersiculoSeleccionado()">
+📤 Compartir
+</button>
+
+<button onclick="copiarVersiculoSeleccionado()">
+📋 Copiar
+</button>
+
+<button onclick="cerrarMenuVersiculo()">
+❌ Cancelar
+</button>
+
+</div>
 </body>
 </html>
 
