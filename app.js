@@ -1041,19 +1041,16 @@ function eliminarNota(libro, capitulo, versiculo){
 function cerrarNota(){
     document.getElementById("ventanaNota").style.display = "none";
 }
-
 window.addEventListener("load", () => {
 
     const ventana = document.getElementById("ventanaNota");
 
-    if (ventana) {
-        ventana.addEventListener("click", function(e){
+    ventana.addEventListener("click", (e) => {
 
-            if (e.target === this) {
-                cerrarNota();
-            }
+        if (e.target.classList.contains("ventana-nota")) {
+            cerrarNota();
+        }
 
-        });
-    }
+    });
 
 });
